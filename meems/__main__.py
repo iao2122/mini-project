@@ -31,9 +31,13 @@ def parse_command_line():
         type=int, default=5)
 
     parser.add_argument(
+        "-o", help="Output file for simulation",
+        dest="outfile", default=None)
+
+    parser.add_argument(
         "-v", "--verbose", 
         help="Increase output verbosity",
-        dest = "verbose", action="store_true")
+        dest="verbose", action="store_true")
 
     # parse args
     return parser.parse_args()
@@ -46,7 +50,11 @@ def main():
                 num_samples_per_site = args.num_samples_per_site,
                 verbose=args.verbose)
 
-    print(m.sim().head())
+    m.sim()
+    if args.outfile:
+        m.write_sim(args.outfile)
+    else:
+        print(m.df.to_csv(index=False))
 
 if __name__ == "__main__":
     args = parse_command_line()
@@ -54,4 +62,5 @@ if __name__ == "__main__":
                 num_species = args.num_species,
                 num_samples_per_site = args.num_samples_per_site,
                 verbose=args.verbose)
-    print(m.sim().head())
+    m.sim()
+    print(m.df.head())

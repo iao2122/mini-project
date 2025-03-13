@@ -3,12 +3,14 @@ import numpy as np
 import pandas as pd
 
 class MEEMS:
-    def __init__(self, num_sites=10, num_species=15, num_samples_per_site=20, verbose=False):
+    def __init__(self, num_sites=10, num_species=15, 
+                num_samples_per_site=20, verbose=False):
 
         # Parameters
         self.num_sites = 10
         self.num_species = 15
         self.num_samples_per_site = 20  # Sample points per site
+        self.df = pd.DataFrame()
 
     def sim(self):
         # Generate site locations (lat, lon)
@@ -48,11 +50,16 @@ class MEEMS:
                         data.append([site_idx, lat, lon, temp, precip, species])
         
         # Convert to DataFrame
-        df = pd.DataFrame(data, columns=["Site", "Latitude", "Longitude", "Temperature", "Precipitation", "Species"])
-        
-        return(df)
+        self.df = pd.DataFrame(data, columns=["Site", "Latitude", "Longitude", "Temperature", "Precipitation", "Species"])
+
+    def write_sim(self, outfile=None): 
+        if self.df.empty:
+            raise Exception("Must call MEEMS.sim() first")
+            
+        if outfile:
+            self.df.to_csv(outfile, index=False)
 
 if __name__ == "__main__":
     m = MEEMS()
     df = m.sim()
-    print(df.head())
+    print(m.df.head())
