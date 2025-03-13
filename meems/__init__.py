@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 """
-Simpd program for ...
+MEEMS - Multi-estimation of effective migration surfaces
 """
+
+from .meems import MEEMS
 
 __version__ = "0.0.1"

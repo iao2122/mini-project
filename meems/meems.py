@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 class MEEMS:
-    def __init__(self, num_sites=10, num_species=15, num_samples_per_site=20):
+    def __init__(self, num_sites=10, num_species=15, num_samples_per_site=20, verbose=False):
 
         # Parameters
         self.num_sites = 10

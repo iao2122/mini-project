@@ -13,9 +13,11 @@ setup(
     author="Isaac Overcast",
     author_email="iao2122@columbia.edu",
     license="GPLv3",
+    packages = ['meems'],
+#    package_dir = {"": "meems"},
     description="A package to simulate georeferenced plant community data where plant",
     classifiers=["Programming Language :: Python :: 3"],
     entry_points={
-        "console_scripts": ["simpd = meems.__main__:main"]
+        "console_scripts": ["meems = meems.__main__:main"]
     },
 )
