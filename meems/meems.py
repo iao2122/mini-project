@@ -7,9 +7,9 @@ class MEEMS:
                 num_samples_per_site=20, verbose=False):
 
         # Parameters
-        self.num_sites = 10
-        self.num_species = 15
-        self.num_samples_per_site = 20  # Sample points per site
+        self.num_sites = num_sites
+        self.num_species = num_species
+        self.num_samples_per_site = num_samples_per_site
         self.df = pd.DataFrame()
 
     def sim(self):

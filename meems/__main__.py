@@ -12,7 +12,7 @@ def parse_command_line():
     "parses args for meems command"
 
     # init parser and add arguments
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="MEEMS: Simulate georeferenced community data")
 
     # add long args
     parser.add_argument(
